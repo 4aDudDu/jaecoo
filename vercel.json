@@ -1,15 +1,23 @@
 {
     "version": 2,
+    "framework": null, // Penting agar Vercel tidak bingung
     "functions": {
         "api/index.php": {
-            "runtime": "vercel-php@0.6.0" // Ini yang mengaktifkan PHP
+            "runtime": "vercel-php@0.6.0" // Atau versi terbaru
         }
     },
     "routes": [
-        // Rute untuk mengarahkan SEMUA permintaan ke serverless function PHP
+        // Rute 1: Menyajikan aset statis (CSS, JS, gambar) dari public/
+        {
+            "src": "/(.*\\.(?:css|js|ico|gif|jpg|jpeg|png|svg|woff|woff2|ttf|eot))",
+            "dest": "/public/$1"
+        },
+        // Rute 2: Mengirimkan SEMUA permintaan lainnya ke serverless function PHP
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
-    ]
+    ],
+    // Memberitahu Vercel bahwa direktori output build adalah 'public'
+    "outputDirectory": "public" 
 }
