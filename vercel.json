@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.6.0" // Ini yang mengaktifkan PHP
+        }
+    },
+    "routes": [
+        // Rute untuk mengarahkan SEMUA permintaan ke serverless function PHP
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
+    ]
+}
