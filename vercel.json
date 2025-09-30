@@ -1,23 +1,20 @@
 {
     "version": 2,
-    "framework": null, 
+    "framework": null,
     "functions": {
         "api/index.php": {
-            "runtime": "vercel-php@0.6.0" 
+            "runtime": "vercel-php@0.6.0"
         }
     },
     "routes": [
-        // Rute 1: Untuk Aset Statis (CSS, JS, Gambar)
         {
             "src": "/(.*\\.(?:css|js|ico|gif|jpg|jpeg|png|svg|woff|woff2|ttf|eot))",
             "dest": "/public/$1"
         },
-        // Rute 2: Mengirimkan semua request ke Serverless Function PHP
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
     ],
-    // Memberitahu Vercel di mana build yang sudah selesai berada
-    "outputDirectory": "public" 
+    "outputDirectory": "public"
 }
